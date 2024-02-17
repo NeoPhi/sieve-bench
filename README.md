@@ -1,3 +1,7 @@
+# Background
+
+Experimenting with testing hit ratio of SIEVE algorithm as outlined in: https://junchengyang.com/publication/nsdi24-SIEVE.pdf
+
 # Setup
 
 Using node v20.11.0
