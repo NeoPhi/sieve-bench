@@ -1,0 +1,11 @@
+{
+  "name": "bench",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^20.11.19",
+    "tsx": "^4.7.1"
+  },
+  "scripts": {
+    "bench": "tsx src/hit-test.ts"
+  }
+}
