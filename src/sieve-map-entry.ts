@@ -15,10 +15,13 @@ export class Sieve<K, V> {
 
   #iterator: IterableIterator<[K, Entry<V>]>;
 
+  #result: IteratorResult<[K, Entry<V>]>;
+
   constructor(maxSize: number) {
     this.#maxSize = maxSize;
     this.#map = new Map();
     this.#iterator = this.#map.entries();
+    this.#result = this.#iterator.next();
   }
 
   set(key: K, value: V) {
@@ -47,10 +50,14 @@ export class Sieve<K, V> {
     this.#map.clear();
   }
 
+  keys() {
+    return this.#map.keys();
+  }
+
   #evict() {
     let doLoop = true;
     while (doLoop) {
-      const { done, value } = this.#iterator.next();
+      const { done, value } = this.#result;
       if (done) {
         this.#iterator = this.#map.entries();
       } else {
@@ -62,6 +69,7 @@ export class Sieve<K, V> {
           doLoop = false;
         }
       }
+      this.#result = this.#iterator.next();
     }
   }
 }
